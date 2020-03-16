@@ -2,7 +2,6 @@ import { sendSMS } from "./../../utils/sendSMS";
 import { Request, Response } from "express";
 import { chain, map } from "lodash";
 import { logger, alarmLogger } from "./../../utils/logger";
-import { sendFcm } from "./../../utils/fcmSender";
 import { filterLectures } from "./../lecture/providers/LectureProvider";
 import { Lecture } from "../../entities";
 

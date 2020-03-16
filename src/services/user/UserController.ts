@@ -2,7 +2,6 @@ import { logger } from "./../../utils/logger";
 import { sendSMS } from "./../../utils/sendSMS";
 import redis from "redis";
 import { setAsync, getAsync, client, SETEX } from "./../../redis/index";
-import { sendFcm } from "./../../utils/fcmSender";
 import { Request, Response, NextFunction } from "express";
 import { User, Lecture } from "../../entities";
 import { HTTP400Error } from "./../../utils/httpErrors";
