@@ -34,6 +34,5 @@ export const checkLecturesHandler = async (
   res: Response
 ): Promise<void> => {
   res.send("ok");
-
   checkLectures();
 };
