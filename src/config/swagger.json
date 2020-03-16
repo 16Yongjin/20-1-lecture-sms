@@ -1,0 +1,44 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "version": "1.0.0"
+  },
+  "host": "localhost:3000",
+  "basePath": "/",
+  "schemes": [
+    "http"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "paths": {
+    "/lectures": {
+      "get": {
+        "tags": [
+          "Get Lectures"
+        ],
+        "summary": "Get Lectures by Course ID from Class Schedule",
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Bad request"
+          }
+        },
+        "content": {
+          "application/json": {}
+        },
+        "parameters": [
+          {
+            "name": "courseId",
+            "in": "query",
+            "description": "Specifies the courseId string",
+            "required": true,
+            "type": "string"
+          }
+        ]
+      }
+    }
+  }
+}

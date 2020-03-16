@@ -1,0 +1,5 @@
+apps:
+  - script: ./dist/index.js
+    name: "lecture-alarm"
+    env_production:
+      NODE_ENV: production

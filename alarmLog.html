@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>log viewer</title>
+    <style>
+      .error {
+        color: red;
+      }
+    </style>
+    <script src="/socket.io/socket.io.js"></script>
+  </head>
+  <body>
+    <pre id="logView"></pre>
+
+    <script>
+      const socket = io();
+      const logView = document.getElementById("logView");
+
+      socket.on("connect", () => {
+        logView.innerHTML += `<div style="color: green;">서버와의 연결됐습니다.</div>`;
+        scrollDown();
+      });
+
+      socket.on("alarmLog", info => {
+        const { message, level, timestamp } = JSON.parse(info);
+        logView.innerHTML += `<div class="${level}">${timestamp} ${level} ${message}</div>`;
+        scrollDown();
+      });
+
+      socket.on("error", err => {
+        logView.innerHTML += `<div class="error">${err.toString()}</div>`;
+        scrollDown();
+      });
+
+      socket.on("disconnect", () => {
+        logView.innerHTML += `<div style="color: red;">서버와의 연결이 끊어졌습니다.</div>`;
+        scrollDown();
+      });
+
+      function scrollDown() {
+        window.scrollTo(0, document.body.scrollHeight);
+      }
+    </script>
+  </body>
+</html>
